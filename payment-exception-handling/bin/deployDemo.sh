@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 ########################################################################################################################
 ### 
 ### Installation script for Event-Based Payment Demo
@@ -528,6 +529,9 @@ function deployKafka(){
     echo
     printHeader "--> Installing Strimzi ... "
     echo
+    echo
+    printHeader "Hello helloo "
+    echo
     mkdir -p ../tmp/kafka
     cp ${TEMPLATES_DIR}/kafka/kafka-persistent.yaml ../tmp/kafka/kafka-persistent.yaml
     sed -i -e "s/opay/$KAFKA_NAMESPACE/" ../tmp/kafka/kafka-persistent.yaml
@@ -535,6 +539,7 @@ function deployKafka(){
     printHeader "--> Deploying AMQ Streams (Strimzi) Cluster now ... Using ../tmp/kafka/kafka-persistent.yaml"
     oc apply -f ../tmp/kafka/kafka-persistent.yaml -n $KAFKA_NAMESPACE
     echo
+
 }
 
 
@@ -1216,7 +1221,7 @@ showConfirmToProceed
 ## --- initialing environment
 init
 
-set -e
+#set -e
 
 ## --- deploy kafka
 deployKafka
